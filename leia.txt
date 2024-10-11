@@ -1,0 +1,37 @@
+Aqui está um exemplo de como você pode organizar os nomes dos arquivos de imagens com base nos produtos simulados. Quando você fizer o download das imagens do site da Monster ou qualquer outro lugar, salve-as com esses nomes para facilitar a integração com o código HTML.
+
+Lista de imagens e nomes sugeridos:
+Logo da Monster Energy
+
+Nome do arquivo: logo.png
+Descrição: Logo oficial da Monster Energy.
+Monster Original
+
+Nome do arquivo: monster_original.png
+Descrição: Imagem da lata do Monster Energy Original.
+Monster Zero
+
+Nome do arquivo: monster_zero.png
+Descrição: Imagem da lata do Monster Energy Zero.
+Monster Ultra
+
+Nome do arquivo: monster_ultra.png
+Descrição: Imagem da lata do Monster Energy Ultra.
+Banner Hero
+
+Nome do arquivo: hero.jpg
+Descrição: Imagem de fundo principal da página, utilizada na seção "hero".
+
+
+
+
+
+Passos para deixar tudo funcionando:
+Crie uma pasta chamada images no mesmo diretório onde está seu arquivo HTML.
+Coloque as imagens na pasta images:
+logo.png (o logo da Monster Energy).
+monster_original.png (lata do Monster Original).
+monster_zero.png (lata do Monster Zero).
+monster_ultra.png (lata do Monster Ultra).
+hero.jpg (imagem de fundo para a seção "hero").
+Depois disso, a página será renderizada corretamente com as imagens no local correto!
