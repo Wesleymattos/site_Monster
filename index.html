@@ -96,10 +96,23 @@
             font-size: 0.9em;
         }
 
-        #music-status {
-            margin: 20px;
+        .volume-control {
             text-align: center;
-            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .volume-control button {
+            background-color: #444;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .volume-control button:hover {
+            background-color: #666;
         }
 
         @media (max-width: 768px) {
@@ -121,7 +134,7 @@
     </header>
 
     <nav>
-        <a href="index.html" id="home-link">Início</a>
+        <a href="index.html">Início</a>
         <a href="products.html">Produtos</a>
         <a href="events.html">Eventos</a>
         <a href="athletes.html">Atletas</a>
@@ -148,42 +161,41 @@
                 <h3>Monster Juice</h3>
             </div>
         </section>
-
-        <!-- Status da Música -->
-        <div id="music-status">Tocando: <span id="track-name">Nome da Música</span> | Tempo: <span id="current-time">0:00</span></div>
     </main>
 
-    <audio id="background-music" loop>
-        <source src="audio/musica_fundo.mp3" type="audio/mpeg">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
+    <!-- Controle de Volume -->
+    <div class="volume-control">
+        <button id="toggle-volume">Desligar Som</button>
+    </div>
 
     <footer>
         <p>&copy; 2024 Monster Energy Company. Todos os direitos reservados.</p>
     </footer>
 
+    <!-- Música de Fundo -->
+    <audio id="background-music" autoplay loop>
+        <source src="audio/musica_fundo.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
     <script>
-        const audio = document.getElementById('background-music');
-        const trackName = document.getElementById('track-name');
-        const currentTime = document.getElementById('current-time');
-        const homeLink = document.getElementById('home-link');
+        // Definir o volume máximo da música
+        var audio = document.getElementById('background-music');
+        audio.volume = 1.0; // Volume máximo
 
-        // Defina o nome da música
-        trackName.textContent = 'Querida amiga'; // Altere para o nome da sua música
+        // Botão para controlar o som
+        var toggleButton = document.getElementById('toggle-volume');
+        var isMuted = false;
 
-        // Iniciar a música ao clicar no link "Início"
-        homeLink.addEventListener('click', (event) => {
-            event.preventDefault(); // Impede o redirecionamento imediato
-            audio.currentTime = 0; // Reinicia a música para o começo
-            audio.play(); // Toca a música
-            window.location.href = homeLink.href; // Redireciona para a página
-        });
-
-        // Atualiza o tempo atual da música a cada segundo
-        audio.addEventListener('timeupdate', () => {
-            const minutes = Math.floor(audio.currentTime / 60);
-            const seconds = Math.floor(audio.currentTime % 60);
-            currentTime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        toggleButton.addEventListener('click', function() {
+            if (isMuted) {
+                audio.muted = false;
+                toggleButton.textContent = 'Desligar Som';
+            } else {
+                audio.muted = true;
+                toggleButton.textContent = 'Ligar Som';
+            }
+            isMuted = !isMuted;
         });
     </script>
 
