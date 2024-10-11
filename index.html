@@ -6,13 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monster Energy</title>
 
-<!-- Meta tags Open Graph para gerar pré-visualização ao compartilhar -->
-<meta property="og:title" content="Monster Energy - Site Oficial de Novo Hamburgo">
-<meta property="og:description" content="Campanha para saúde, explore nossos produtos, eventos e tudo sobre a Monster Energy diretamente de Novo Hamburgo!">
-<meta property="og:image" content="https://Wesleymattos.github.io/site_Monster/images/capa_monster.jpg"> <!-- URL correta da sua imagem -->
-<meta property="og:url" content="https://Wesleymattos.github.io/site_Monster/"> <!-- URL correta do seu site -->
-<meta property="og:type" content="website">
-
+    <!-- Meta tags Open Graph para gerar pré-visualização ao compartilhar -->
+    <meta property="og:title" content="Monster Energy - Site Oficial de Novo Hamburgo">
+    <meta property="og:description" content="Campanha para saúde, explore nossos produtos, eventos e tudo sobre a Monster Energy diretamente de Novo Hamburgo!">
+    <meta property="og:image" content="https://Wesleymattos.github.io/site_Monster/images/capa_monster.jpg">
+    <meta property="og:url" content="https://Wesleymattos.github.io/site_Monster/">
+    <meta property="og:type" content="website">
 
     <style>
         body {
@@ -68,18 +67,18 @@
             display: flex;
             justify-content: space-around;
             padding: 50px 20px;
-            flex-wrap: wrap; /* Permite que os itens se ajustem em telas menores */
+            flex-wrap: wrap;
         }
 
         .product {
             text-align: center;
             flex: 1;
             margin: 0 15px;
-            transition: transform 0.3s; /* Efeito ao passar o mouse */
+            transition: transform 0.3s;
         }
 
         .product:hover {
-            transform: scale(1.05); /* Efeito de escala ao passar o mouse */
+            transform: scale(1.05);
         }
 
         .product img {
@@ -97,14 +96,33 @@
             font-size: 0.9em;
         }
 
-        @media (max-width: 768px) { /* Ajustes responsivos */
+        .volume-control {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .volume-control button {
+            background-color: #444;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .volume-control button:hover {
+            background-color: #666;
+        }
+
+        @media (max-width: 768px) {
             .products {
                 flex-direction: column;
                 align-items: center;
             }
 
             .product {
-                margin: 20px 0; /* Adiciona espaçamento entre os produtos */
+                margin: 20px 0;
             }
         }
     </style>
@@ -145,9 +163,41 @@
         </section>
     </main>
 
+    <!-- Controle de Volume -->
+    <div class="volume-control">
+        <button id="toggle-volume">Desligar Som</button>
+    </div>
+
     <footer>
         <p>&copy; 2024 Monster Energy Company. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- Música de Fundo -->
+    <audio id="background-music" autoplay loop>
+        <source src="audio/musica_fundo.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <script>
+        // Definir o volume máximo da música
+        var audio = document.getElementById('background-music');
+        audio.volume = 1.0; // Volume máximo
+
+        // Botão para controlar o som
+        var toggleButton = document.getElementById('toggle-volume');
+        var isMuted = false;
+
+        toggleButton.addEventListener('click', function() {
+            if (isMuted) {
+                audio.muted = false;
+                toggleButton.textContent = 'Desligar Som';
+            } else {
+                audio.muted = true;
+                toggleButton.textContent = 'Ligar Som';
+            }
+            isMuted = !isMuted;
+        });
+    </script>
 
 </body>
 </html>
